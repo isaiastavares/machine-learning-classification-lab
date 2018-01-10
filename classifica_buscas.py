@@ -1,3 +1,4 @@
+from collections import Counter
 import pandas as pd
 
 #df = data frame
@@ -30,11 +31,23 @@ modelo = MultinomialNB()
 modelo.fit(treino_dados, treino_marcacoes)
 
 resultado = modelo.predict(teste_dados)
-diferencas = resultado - teste_marcacoes
-acertos = [d for d in diferencas if d == 0]
-total_de_acertos = len(acertos)
+acertos = (resultado == teste_marcacoes)
+
+total_de_acertos = sum(acertos)
 total_de_elementos = len(teste_dados)
 taxa_de_acerto = 100.0 * total_de_acertos / total_de_elementos
 
-print(taxa_de_acerto)
+print("Taxa de acerto do algoritmo: %.2f" % taxa_de_acerto)
 print(total_de_elementos)
+
+# a eficacia do algoritmo que chuta tudo um unico valor
+#acerto_de_um = len(Y[Y=='sim'])
+#acerto_de_zero = len(Y[Y=='nao'])
+
+#acerto_de_um = list(Y).count('sim')
+#acerto_de_zero = list(Y).count('nao')
+
+acerto_base = max(Counter(teste_marcacoes).itervalues())
+taxa_de_acerto_base = 100.0 * acerto_base / len(teste_marcacoes)
+
+print("Taxa de acerto base: %.2f" % taxa_de_acerto_base)
