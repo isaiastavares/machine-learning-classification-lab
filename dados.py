@@ -7,7 +7,7 @@ def carregar_acessos():
     #Y as marcacoes (que eu nao sei) eh o que eu quero prever
     Y = []
 
-    arquivo = open('acessos.csv', 'rb')
+    arquivo = open('acesso.csv', 'rb')
     leitor = csv.reader(arquivo)
 
     leitor.next()
@@ -25,7 +25,7 @@ def carregar_buscas():
     X = []
     Y = []
 
-    arquivo = open('buscas.csv', 'rb')
+    arquivo = open('busca.csv', 'rb')
     leitor = csv.reader(arquivo)
 
     leitor.next()
