@@ -1,19 +1,12 @@
 from collections import Counter
 import pandas as pd
 
-# teste inicial : home, busca, logado => comprou
-# home, busca
-# home, logado
-# busca, logado
-# busca: 85.71% (7 testes)
-
 #df = data frame
 df = pd.read_csv('situacao_do_cliente.csv')
 
 X_df = df[['recencia', 'frequencia', 'semanas_de_inscricao']]
 Y_df = df['situacao']
 
-#ira transformar a coluna busca em binario
 Xdummies_df = pd.get_dummies(X_df)
 Ydummies_df = Y_df
 
